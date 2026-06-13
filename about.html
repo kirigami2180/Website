@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Arman Biraji — Civil Engineer</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+  <link rel="shortcut icon" href="image/favicon-32x32.png">
+  <link rel="stylesheet" href="css/global.css"/>
+  <style>
+    /* ABOUT-GRID */
+    .about-grid { display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;margin-bottom:120px; }
+    .about-text p { font-size:0.95rem;color:var(--dim);line-height:1.9;margin-bottom:1.4rem; }
+    .about-text p strong { color:var(--gold);font-weight:600; }
+    .about-text p em { color:var(--blue);font-style:normal; }
+    .badge-cloud { display:flex;flex-wrap:wrap;gap:8px;margin-top:2rem; }
+
+    /* HEX VISUAL */
+    .hex-visual { display:flex;justify-content:center;align-items:center;position:relative; }
+    .hex-frame { width:300px;height:300px;position:relative; }
+    .hex-ring-a { position:absolute;inset:0;animation:spinSlow 26s linear infinite; }
+    .hex-ring-b { position:absolute;inset:22px;animation:spinReverse 18s linear infinite; }
+    .hex-ring-c { position:absolute;inset:55px;animation:spinSlow 12s linear infinite; }
+    .hex-core {
+      position:absolute;inset:90px;
+      background:linear-gradient(135deg,var(--bg2),var(--bg));
+      border:1px solid var(--border);
+      border-radius:50%;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+      box-shadow:0 0 40px rgba(0,200,255,0.15),inset 0 0 30px rgba(0,200,255,0.05);
+    }
+    .hc-icon { font-size:2.8rem;filter:drop-shadow(0 0 14px var(--blue)); }
+    .hc-label { font-family:'Bebas Neue',sans-serif;font-size:0.85rem;letter-spacing:3px;color:var(--blue); }
+
+    /* TIMELINE */
+    .tl-section { margin-bottom:120px; }
+
+    /* VALUES GRID */
+    .values-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:80px; }
+    .val-card {
+      border:1px solid var(--border);padding:40px 30px;background:var(--glass);
+      position:relative;overflow:hidden;cursor:default;
+      transition:all 0.4s var(--ease-out);
+    }
+    .val-card:hover { background:rgba(0,200,255,0.06);border-color:rgba(0,200,255,0.32);transform:translateY(-6px); }
+    .val-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 0.45s var(--ease-out); }
+    .val-card:hover::before { transform:scaleX(1); }
+    .vc-num { font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--blue);opacity:0.15;line-height:1;position:absolute;top:12px;right:16px; }
+    .vc-icon { font-size:2rem;margin-bottom:1rem;display:block;filter:drop-shadow(0 0 8px rgba(0,200,255,0.4)); }
+    .vc-title { font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff;letter-spacing:2px;margin-bottom:10px; }
+    .vc-text { font-size:0.83rem;color:var(--dim);line-height:1.72; }
+
+    @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:50px}.hex-visual{display:none}.values-grid{grid-template-columns:1fr}}
+    @media(max-width:600px){.values-grid{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <div id="page-overlay"></div>
+  <div id="cursor-dot"></div><div id="cursor-ring"></div>
+  <div id="scroll-progress"></div>
+  <div class="orb orb-1"></div><div class="orb orb-2"></div>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">AB<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-num">01</span>Home</a></li>
+      <li><a href="about.html"><span class="nav-num">02</span>About</a></li>
+      <li><a href="skills.html"><span class="nav-num">03</span>Skills</a></li>
+      <li><a href="focus.html"><span class="nav-num">04</span>Focus</a></li>
+      <li><a href="contact.html"><span class="nav-num">05</span>Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">HIRE ME</a>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="nav-mobile-drawer">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="skills.html">Skills</a><a href="focus.html">Focus</a><a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-hero">
+    <div>
+      <div class="ph-eyebrow">02 — About Me</div>
+      <h1 class="ph-h1"><span class="outline">ABOUT</span><span class="gradient">ME</span></h1>
+      <p class="ph-desc">The story behind the engineer — passion, education, and a commitment to building a better world.</p>
+    </div>
+  </div>
+
+  <section class="section-wrap dark">
+    <div class="about-grid">
+      <div class="about-text reveal-left">
+        <div class="section-head">
+          <div class="section-eyebrow">Who I Am</div>
+          <div class="section-title">THE <em>ENGINEER</em><br>BEHIND THE WORK</div>
+          <div class="section-rule"></div>
+        </div>
+        <p>I'm <strong>Arman Biraji</strong>, a third-year B.E. Civil Engineering student at Advanced College of Engineering & Management. Engineering, to me, is not just a discipline — it's a language for describing how the physical world can be made better, safer, and more enduring.</p>
+        <p>My academic journey has taken me deep into <strong>structural mechanics</strong>, <strong>hydraulic systems</strong>, geotechnical analysis, and construction management. But what excites me most is where civil engineering intersects with technology — BIM workflows, smart cities, data-driven infrastructure decisions.</p>
+        <p>Outside the classroom, I read obsessively about material science breakthroughs, sketch bridge cross-sections in spare time, and believe that the most beautiful things humans have ever built are <em>infrastructure</em>.</p>
+        <div class="badge-cloud">
+          <span class="badge">Structural Analysis</span>
+          <span class="badge">Hydraulics</span>
+          <span class="badge">Geotechnics</span>
+          <span class="badge">BIM</span>
+          <span class="badge">Sustainability</span>
+          <span class="badge">Smart Cities</span>
+          <span class="badge">GIS</span>
+          <span class="badge">AutoCAD</span>
+        </div>
+      </div>
+      <div class="hex-visual reveal-right">
+        <div class="hex-frame">
+          <svg class="hex-ring-a" viewBox="0 0 300 300">
+            <polygon points="150,8 288,78 288,222 150,292 12,222 12,78" fill="none" stroke="rgba(0,200,255,0.28)" stroke-width="1"/>
+            <circle cx="150" cy="8"   r="4" fill="var(--blue)" opacity="0.9"/>
+            <circle cx="288" cy="78"  r="4" fill="var(--blue)" opacity="0.6"/>
+            <circle cx="288" cy="222" r="4" fill="var(--gold)" opacity="0.7"/>
+            <circle cx="150" cy="292" r="4" fill="var(--gold)" opacity="0.9"/>
+            <circle cx="12"  cy="222" r="4" fill="var(--blue)" opacity="0.6"/>
+            <circle cx="12"  cy="78"  r="4" fill="var(--blue)" opacity="0.9"/>
+          </svg>
+          <svg class="hex-ring-b" viewBox="0 0 256 256">
+            <polygon points="128,8 244,68 244,188 128,248 12,188 12,68" fill="none" stroke="rgba(255,184,48,0.2)" stroke-width="1" stroke-dasharray="6,6"/>
+          </svg>
+          <svg class="hex-ring-c" viewBox="0 0 190 190">
+            <circle cx="95" cy="95" r="85" fill="none" stroke="rgba(0,200,255,0.12)" stroke-width="1" stroke-dasharray="3,9"/>
+          </svg>
+          <div class="hex-core">
+            <div class="hc-icon">🏗️</div>
+            <div class="hc-label">CIVIL ENG.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION TIMELINE -->
+    <div class="tl-section">
+      <div class="section-head reveal">
+        <div class="section-eyebrow">Education</div>
+        <div class="section-title">ACADEMIC <em>JOURNEY</em></div>
+        <div class="section-rule"></div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal d1">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2022 — Present</div>
+          <div class="tl-title">B.E. CIVIL ENGINEERING</div>
+          <div class="tl-org">Advanced College of Engineering & Management · CGPA 8.6 / 10</div>
+          <div class="tl-desc">Comprehensive curriculum spanning structural design, fluid mechanics, geotechnical engineering, surveying, environmental systems, and construction management. Dean's List 2022–2023. Active member of the Civil Engineering Society.</div>
+          <div class="tl-tags"><span class="pill">CGPA 8.6</span><span class="pill">Dean's List</span><span class="pill">3rd Year</span></div>
+        </div>
+        <div class="tl-item reveal d2">
+          <div class="tl-dot gold"></div>
+          <div class="tl-year">2024</div>
+          <div class="tl-title">SUSTAINABLE CITIES</div>
+          <div class="tl-org">Coursera · University of Geneva</div>
+          <div class="tl-desc">Explored urban metabolism, circular economy in cities, smart city governance, and net-zero urban design strategies.</div>
+          <div class="tl-tags"><span class="pill">Coursera</span><span class="pill">Sustainability</span><span class="pill">Urban Design</span></div>
+        </div>
+        <div class="tl-item reveal d3">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2023</div>
+          <div class="tl-title">AUTODESK CERTIFIED USER — AutoCAD</div>
+          <div class="tl-org">Autodesk Official Certification</div>
+          <div class="tl-desc">Industry-recognised certification demonstrating proficiency in 2D drafting, annotation, and design workflows within the AutoCAD platform. Advanced exercises in architectural and civil drawing standards.</div>
+          <div class="tl-tags"><span class="pill">AutoCAD</span><span class="pill">Certified</span></div>
+        </div>
+        <div class="tl-item reveal d4">
+          <div class="tl-dot gold"></div>
+          <div class="tl-year">2023</div>
+          <div class="tl-title">URBAN TRANSPORTATION PLANNING</div>
+          <div class="tl-org">NPTEL · Elite Certificate</div>
+          <div class="tl-desc">12-week intensive course covering urban mobility, public transport systems, road geometry, traffic modelling, and future-ready city planning. Awarded Elite status with top 5% national rank.</div>
+          <div class="tl-tags"><span class="pill">NPTEL</span><span class="pill">Elite</span><span class="pill">Transport</span></div>
+        </div>
+        <div class="tl-item reveal d5">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2020 — 2022</div>
+          <div class="tl-title">HIGHER SECONDARY (PCM)</div>
+          <div class="tl-org"> Prasadi Academy </div>
+          <div class="tl-desc">Specialized stream of Physics, Chemistry, and Mathematics. Built strong analytical foundations.</div>
+                  </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section-wrap">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Philosophy</div>
+      <div class="section-title">WHAT I <em>STAND FOR</em></div>
+      <div class="section-rule"></div>
+    </div>
+    <div class="values-grid">
+      <div class="val-card reveal d1"><div class="vc-num">01</div><span class="vc-icon">⚖️</span><div class="vc-title">PRECISION</div><div class="vc-text">Engineering decisions carry physical weight — sometimes literally. Meticulous calculation and triple-checked drawings are non-negotiable.</div></div>
+      <div class="val-card reveal d2"><div class="vc-num">02</div><span class="vc-icon">🌿</span><div class="vc-title">SUSTAINABILITY</div><div class="vc-text">Infrastructure built today will outlive its engineers. Every choice should minimise ecological footprint and leave the planet better than we found it.</div></div>
+      <div class="val-card reveal d3"><div class="vc-num">03</div><span class="vc-icon">💡</span><div class="vc-title">INNOVATION</div><div class="vc-text">Traditional methods form the backbone, but digital tools and new materials are rewriting what's possible. I stay hungry for what's next.</div></div>
+      <div class="val-card reveal d4"><div class="vc-num">04</div><span class="vc-icon">🤝</span><div class="vc-title">COLLABORATION</div><div class="vc-text">Great infrastructure is built by diverse minds — architects, planners, contractors, communities — working in concert.</div></div>
+      <div class="val-card reveal d5"><div class="vc-num">05</div><span class="vc-icon">📐</span><div class="vc-title">CRAFT</div><div class="vc-text">A well-drawn detail, a neatly annotated section, a clean CAD file. Invisible craftsmanship matters as much as the structure itself.</div></div>
+      <div class="val-card reveal d6"><div class="vc-num">06</div><span class="vc-icon">🏙️</span><div class="vc-title">HUMANITY</div><div class="vc-text">Bridges connect people. Roads open opportunity. Every project is ultimately about human lives, dignity, and quality of living.</div></div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="skills.html" class="btn btn-primary reveal">View My Skills →</a>
+    </div>
+  </section>
+<footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fb-logo">AB<span>.</span></div>
+        <p>Civil Engineering student passionate about structural precision, sustainable infrastructure, and smart cities.</p>
+                <div class="footer-social" style="margin-top:1.5rem">
+          <a href="https://linkedin.com/in/alexcarter" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com/kirigami2180" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://twitter.com/iamkirigami" target="_blank" rel="noopener" title="Twitter / X" aria-label="Twitter">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://instagram.com/iamkirigami" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://youtube.com/@kirigami2180" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col"><div class="footer-col-title">Navigation</div><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="skills.html">Skills</a></li><li><a href="focus.html">Focus</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col">
+        <div class="footer-col-title">Expertise</div>
+        <ul>
+          <li><a href="skills.html#structural">Structural Analysis</a></li>
+          <li><a href="skills.html#bim">BIM &amp; Revit</a></li>
+          <li><a href="skills.html#autocad">AutoCAD</a></li>
+          <li><a href="skills.html#hydraulics">Hydraulics</a></li>
+          <li><a href="skills.html#gis">GIS &amp; Mapping</a></li>
+        </ul>
+      </div>
+            <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <ul>
+          <li><a href="mailto:armanbiraji@gmail.com">Email</a></li>
+          <li><a href="https://linkedin.com/in/alexcarter" target="_blank">LinkedIn Profile</a></li>
+          <li><a href="https://github.com/kirigami2180" target="_blank">GitHub</a></li>
+          <li><a href="contact.html">Kathmandu, Nepal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Arman Biraji · All Rights Reserved</div>
+      <div class="footer-made">Crafted with <span>♥</span> by Arman Biraji</div>
+    </div>
+  </footer>
+
+ <!-- <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="fb-logo">AC<span>.</span></div><p>Civil Engineering student passionate about structural precision, sustainable infrastructure, and smart cities.</p>        <div class="footer-social" style="margin-top:1.5rem">
+          <a href="https://linkedin.com/in/alexcarter" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com/alexcarter-ce" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://twitter.com/alexcarter_ce" target="_blank" rel="noopener" title="Twitter / X" aria-label="Twitter">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://instagram.com/alexcarter.civil" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://youtube.com/@alexcarterce" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div></div>
+      <div class="footer-col"><div class="footer-col-title">Navigation</div><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="skills.html">Skills</a></li><li><a href="focus.html">Focus</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col">
+        <div class="footer-col-title">Expertise</div>
+        <ul>
+          <li><a href="skills.html#structural">Structural Analysis</a></li>
+          <li><a href="skills.html#bim">BIM &amp; Revit</a></li>
+          <li><a href="skills.html#autocad">AutoCAD</a></li>
+          <li><a href="skills.html#hydraulics">Hydraulics</a></li>
+          <li><a href="skills.html#gis">GIS &amp; Mapping</a></li>
+        </ul>
+      </div>
+            <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <ul>
+          <li><a href="mailto:alex.carter@email.com">alex.carter@email.com</a></li>
+          <li><a href="https://linkedin.com/in/alexcarter" target="_blank">LinkedIn Profile</a></li>
+          <li><a href="https://github.com/alexcarter-ce" target="_blank">GitHub</a></li>
+          <li><a href="contact.html">Mumbai, India</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Arman Biraji · All Rights Reserved</div>
+      <div class="footer-made">Crafted with <span>♥</span> by Arman Biraji</div>
+    </div>
+  </footer> --!>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
